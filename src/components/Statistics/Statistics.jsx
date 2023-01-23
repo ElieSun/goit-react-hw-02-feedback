@@ -1,19 +1,26 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Statistics = ({info, state}) => {
-
-    const positiveFeedback = Math. round(info.positivePercentage * 100);
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
     return (
-        <>
-        <h2>Statistics</h2>
-        <ul>
-            <li>Good: {state.good}</li>
-            <li>Neutral: {state.neutral}</li>
-            <li>Bad: {state.bad}</li>
-            <li>Total: {info.total}</li>
-            <li>Positive Feedback: {positiveFeedback}</li>
-        </ul>
-        </>
+        <section>
+            <ul>
+                <li>Good:<span>{good}</span></li>
+                <li>Neutral:<span>{neutral}</span></li>
+                <li>Bad:<span>{bad}</span></li>
+                <li>Total:<span>{total}</span></li>
+                <li>Positive Feedback:<span>{positivePercentage}</span></li>
+            </ul>
+        </section>
     )
+}
+
+Statistics.propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
 }
 
 export default Statistics;
