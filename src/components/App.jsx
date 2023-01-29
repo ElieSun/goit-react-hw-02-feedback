@@ -3,6 +3,7 @@ import Notification from './Notification/Notification';
 import Statistics from './Statistics/Statistics';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import SectionTitle from './SectionTitle/SectionTitle';
+import { Main, SubTitle } from 'components/App.styled';
 
 export class App extends Component {
     state = {
@@ -32,19 +33,18 @@ export class App extends Component {
 
     render() {
         return(
-          <div>
-              <SectionTitle title="Please leave your Feedback">
-                <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.incrementFeedback}/>
-                <h2>Statistics</h2>
-                {this.countTotalFeedback() ? (
-                  <Statistics good={this.state.good} 
-                              neutral={this.state.neutral} 
-                              bad={this.state.bad} 
-                              total={this.countTotalFeedback()}
-                              positivePercentage={this.countPositivePersentage()}/>
-                ) : (<Notification message="There is no feedback"/>)}
-              </SectionTitle>
-          </div>
+          <Main>
+              <SectionTitle title="Please leave your Feedback"></SectionTitle>
+              <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.incrementFeedback}/>
+              <SubTitle>Statistics</SubTitle>
+              {this.countTotalFeedback() ? (
+                <Statistics good={this.state.good} 
+                            neutral={this.state.neutral} 
+                            bad={this.state.bad} 
+                            total={this.countTotalFeedback()}
+                            positivePercentage={this.countPositivePersentage()}/>
+              ) : (<Notification message="There is no feedback"/>)}
+          </Main>
         );
     };
 }
